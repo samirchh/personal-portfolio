@@ -39,7 +39,7 @@ export default function ContactForm() {
       <div role="status" className="border border-canvas/25 p-8">
         <p className="font-display text-2xl font-semibold">Message sent.</p>
         <p className="mt-2 text-canvas/70">
-          Thanks for writing. I'll get back to you soon.
+          Thanks for writing. I&apos;ll get back to you soon.
         </p>
         <button
           type="button"

@@ -12,7 +12,7 @@ export default function Contact() {
             </h2>
             <p className="mt-6 max-w-[40ch] text-lg text-canvas/70">
               Have a project, a role, or a bug to look at? Send a message and
-              I'll reply.
+             I&apos;ll reply.
             </p>
 
             <a
