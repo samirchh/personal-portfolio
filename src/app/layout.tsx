@@ -1,23 +1,35 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Inter } from "next/font/google";
+import { Bricolage_Grotesque, Instrument_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { profile } from "@/data/content";
 
-const mono = JetBrains_Mono({
+// Display face. Variable on width + weight so the hero can animate both.
+const display = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-mono",
-  weight: ["400", "500", "700"],
+  variable: "--font-display",
+  axes: ["wdth", "opsz"],
+  display: "swap",
 });
 
-const sans = Inter({
+// Reading face. Calm, humanist, clearly distinct from the display face.
+const sans = Instrument_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
-  weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+// Mono is reserved for real data only (test IDs, dates), not for labels.
+const mono = DM_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  weight: ["400", "500"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: `${profile.name} — ${profile.role}`,
   description: profile.tagline,
+  metadataBase: new URL("https://sameerjungchhetri.com.np"),
 };
 
 export default function RootLayout({
@@ -26,8 +38,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${mono.variable} ${sans.variable}`}>
-      <body className="bg-bg text-text font-sans antialiased">
+    <html
+      lang="en"
+      className={`${display.variable} ${sans.variable} ${mono.variable}`}
+    >
+      <body className="bg-canvas font-sans text-ink antialiased">
         {children}
       </body>
     </html>

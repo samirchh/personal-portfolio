@@ -1,7 +1,8 @@
 # Personal Portfolio
 
-Next.js 14 (App Router) + TypeScript + Tailwind CSS. Dark, terminal-inspired
-theme built around a monospace type treatment for headings and a teal accent.
+Next.js 14 (App Router) + TypeScript + Tailwind CSS. A light, "design review
+board" look: cool grey-blue canvas, navy ink, and a single red annotation
+accent, built around the idea of *Build it. Test it. Fix it.*
 
 ## Setup
 
@@ -23,6 +24,9 @@ src/
   components/
     Nav.tsx
     Hero.tsx
+    BugReport.tsx    # a real Vyam bug written as a QA report
+    Experience.tsx
+    ContactForm.tsx  # posts to /api/contact
     About.tsx
     Skills.tsx
     Projects.tsx
@@ -31,6 +35,17 @@ src/
   data/
     content.ts        # ALL editable content lives here
 ```
+
+## Contact form (needs setup once)
+
+The form posts to `src/app/api/contact/route.ts`, which emails
+sameerchhetri2060@gmail.com through Gmail using nodemailer.
+
+1. Turn on 2-Step Verification on the Google account.
+2. Create an App Password (Google Account > Security > App passwords).
+3. Copy `.env.example` to `.env.local` and paste the password into
+   `GMAIL_APP_PASSWORD`. On Vercel, add both variables under
+   Settings > Environment Variables and redeploy.
 
 ## Customizing
 
@@ -43,13 +58,18 @@ To swap the resume: drop your PDF into `public/resume.pdf` (the link in
 
 ## Design notes
 
-- Fonts: JetBrains Mono (headings/labels) + Inter (body) — loaded via
-  `next/font/google`, self-hosted at build time (no runtime request to
-  Google Fonts, no layout shift).
-- Colors are Tailwind tokens defined in `tailwind.config.ts` — change them
-  once there and they propagate everywhere (`bg`, `surface`, `border`,
-  `text`, `muted`, `accent`).
-- Respects `prefers-reduced-motion` and has visible keyboard focus rings.
+- Fonts: Bricolage Grotesque (display) + Instrument Sans (body) + DM Mono
+  (test IDs only), loaded via `next/font/google` and self-hosted at build time.
+  Bricolage is a variable font; the hero animates its `wdth` and `wght` axes.
+  **The first `next build` needs internet access** to download the fonts.
+- Colors are Tailwind tokens in `tailwind.config.ts`: `canvas`, `frame`, `ink`,
+  `graphite`, `hairline`, `redline` (accent, used for marks only) and `pass`
+  (QA status only). Change them once there and they propagate everywhere.
+- The only load animation is the hero headline (`set-type` and `draw-redline`
+  in `globals.css`). Everything else is still until you interact with it.
+- Skills are grouped under Design / Build / Break in `content.ts`.
+- Respects `prefers-reduced-motion` (final state shows immediately) and has
+  visible keyboard focus on every interactive element.
 
 ## Deploying
 

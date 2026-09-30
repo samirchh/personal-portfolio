@@ -7,6 +7,7 @@
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
@@ -14,7 +15,7 @@
 }
 
 :focus-visible {
-  outline: 2px solid #5eead4;
+  outline: 2px solid #e5312b;
   outline-offset: 3px;
 }
 
@@ -23,29 +24,53 @@ html {
 }
 
 ::selection {
-  background: #2dd4bf;
-  color: #0a0a0b;
+  background: #12182b;
+  color: #e9ecf1;
 }
 
-body {
-  background-image: radial-gradient(
-    circle at 15% 0%,
-    rgba(94, 234, 212, 0.05),
-    transparent 40%
-  );
-}
-
-@keyframes blink {
-  0%,
-  49% {
-    opacity: 1;
-  }
-  50%,
-  100% {
+/* ------------------------------------------------------------------
+   The one orchestrated moment: the hero's three words.
+   Each line "sets" from a squeezed, light state into its resting
+   width and weight, staggered. It uses the display font's real
+   width (wdth) and weight (wght) axes, so it is typographic, not a
+   generic fade-and-slide.
+   ------------------------------------------------------------------ */
+@keyframes set-type {
+  0% {
+    font-variation-settings: "wdth" 75, "wght" 200, "opsz" 96;
+    letter-spacing: 0.04em;
     opacity: 0;
   }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    font-variation-settings: "wdth" 100, "wght" 700, "opsz" 96;
+    letter-spacing: -0.035em;
+    opacity: 1;
+  }
 }
 
-.cursor-blink {
-  animation: blink 1s step-start infinite;
+.hero-word {
+  font-variation-settings: "wdth" 100, "wght" 700, "opsz" 96;
+  letter-spacing: -0.035em;
+  animation: set-type 1.1s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+}
+.hero-word:nth-child(1) { animation-delay: 0.05s; }
+.hero-word:nth-child(2) { animation-delay: 0.22s; }
+.hero-word:nth-child(3) { animation-delay: 0.39s; }
+
+/* Redline measurement mark that draws under the last word once. */
+@keyframes draw-redline {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+.redline-mark {
+  transform-origin: left center;
+  animation: draw-redline 0.7s cubic-bezier(0.6, 0, 0.2, 1) 1.3s both;
+}
+
+/* Tabular figures for any real data */
+.tnum {
+  font-variant-numeric: tabular-nums;
 }

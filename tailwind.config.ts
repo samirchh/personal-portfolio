@@ -8,28 +8,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: "#0A0A0B",
-        surface: "#111113",
-        border: "#242426",
-        text: "#EDEDED",
-        muted: "#8A8A8E",
-        accent: "#5EEAD4",
-        accentDim: "#2DD4BF",
+        // Cool grey-blue "canvas" (like a Figma board), not warm cream.
+        canvas: "#E9ECF1",
+        frame: "#FFFFFF",
+        ink: "#12182B",
+        graphite: "#5A6275",
+        hairline: "#C9CFDB",
+        // The red designers use to annotate mockups. Used for marks only.
+        redline: "#E5312B",
+        // QA verdict green. Used for status only.
+        pass: "#13795B",
       },
       fontFamily: {
-        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+        display: ["var(--font-display)", "ui-sans-serif", "system-ui"],
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       maxWidth: {
-        content: "720px",
+        board: "1180px",
       },
-      typography: () => ({
-        DEFAULT: {
-          css: {
-            maxWidth: "80ch",
-          },
-        },
-      }),
     },
   },
   plugins: [],

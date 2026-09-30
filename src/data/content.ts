@@ -1,8 +1,8 @@
 export const profile = {
   name: "Sameer Jung Chhetri",
-  role: "Frontend Engineer, QA & UI/UX",
+  role: "Full-Stack Developer, QA & Security Testing",
   tagline:
-    "I design interfaces, build them in code, then break them on purpose to make sure they hold up. Frontend engineering, QA, and UI/UX across SaaS and web platforms.",
+    "Final-year CSIT student who builds web apps with React, Next.js and Django, then tests them with Playwright, Postman, OWASP ZAP and k6. I like finding the bugs that actually matter.",
   location: "Pokhara, Nepal",
   email: "sameerchhetri2060@gmail.com",
   resumeUrl: "/resume.pdf",
@@ -14,40 +14,98 @@ export const profile = {
 
 export const about = {
   paragraphs: [
-    "I'm a final-year BSc CSIT student and QA intern working across frontend development, UI/UX design, and quality assurance. My work sits at three points of the same product: designing the interface, building it in React, and testing it until it holds up.",
-    "Currently I work on a multi-tenant gym SaaS ERP platform, handling QA and frontend work, and I design interfaces in Figma before shipping them. I've also run authorized load and security testing engagements on production systems, including rate-limit penetration testing for a client travel platform.",
-    "I like interfaces that feel obvious to use and systems that hold up under real pressure, concurrent users, malformed input, and the edge cases nobody wrote a spec for.",
+    "I'm a final-year BSc CSIT student in Pokhara. I've done internships in QA, full-stack development and AI/ML, and I build with the MERN and PERN stacks and Django.",
+    "Most of my recent work was on Vyam, a multi-tenant gym ERP. I tested it, fixed bugs, built frontend features, and traced a data access flaw that let staff in one branch see another branch's members. I also ran authorized load and security tests on company and client web apps using k6, Postman and OWASP ZAP.",
+    "I'm looking for a junior full-stack or QA role where I can keep doing both: building features, and checking that they hold up.",
+  ],
+  education: [
+    {
+      title: "BSc. Computer Science and Information Technology",
+      place: "Soch College of IT, Tribhuvan University",
+      when: "Final year",
+      note: "Database Management Systems, Software Project Management (Agile), Web Technologies, AI",
+    },
+    {
+      title: "+2 in Science",
+      place: "Janapriya Multiple College",
+      when: "",
+      note: "",
+    },
   ],
 };
 
 export const skills = [
   {
-    category: "UI/UX & Design",
-    items: ["Figma", "Wireframing", "Design Systems", "Prototyping"],
-  },
-  {
-    category: "Frontend",
-    items: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-  },
-  {
-    category: "QA & Testing",
-    items: ["Manual Test Design", "k6 Load Testing", "Bug Tracking", "Regression Testing"],
+    category: "Full-stack",
+    items: [
+      "React.js",
+      "Next.js",
+      "MERN",
+      "PERN",
+      "Django",
+      "PostgreSQL",
+      "REST APIs",
+      "HTML5/CSS3",
+      "Tailwind",
+    ],
   },
   {
     category: "Languages",
-    items: ["JavaScript", "TypeScript", "Python", "SQL"],
+    items: ["JavaScript", "Java", "C/C++", "Python (basic)"],
   },
   {
-    category: "Backend & Data",
-    items: ["Node.js", "REST APIs", "PostgreSQL", "MongoDB"],
+    category: "QA & Security",
+    items: [
+      "Playwright",
+      "Postman",
+      "OWASP ZAP",
+      "k6 load testing",
+      "Manual QA (test cases, bug reports)",
+    ],
   },
   {
-    category: "Security",
-    items: ["Rate-Limit Testing", "Basic Pen Testing", "OWASP Fundamentals"],
+    category: "Design & Tools",
+    items: ["Figma (UI/UX design, prototyping)", "Git", "GitHub"],
+  },
+];
+
+export type Job = {
+  role: string;
+  company: string;
+  place: string;
+  when: string;
+  points: string[];
+};
+
+export const experience: Job[] = [
+  {
+    role: "QA and Frontend Intern",
+    company: "Aankhijhyal Technologies Pvt. Ltd.",
+    place: "Pokhara",
+    when: "2026",
+    points: [
+      "Tested and fixed bugs on Vyam, a multi-tenant gym SaaS ERP platform, and built responsive frontend features.",
+      "Ran authorized load and security testing on company and client web apps using k6, Postman and OWASP ZAP.",
+    ],
   },
   {
-    category: "Tools",
-    items: ["Git", "Docker", "Postman", "Jira"],
+    role: "AI/ML Intern",
+    company: "Aakar eSolutions",
+    place: "Ranipauwa, Pokhara",
+    when: "2025",
+    points: [
+      "Applied Python and fundamental machine learning techniques to develop and evaluate AI/ML solutions.",
+      "Tested and integrated AI-powered applications, checking model outputs for accuracy, consistency and reliability.",
+    ],
+  },
+  {
+    role: "Senior Test Center Administrator",
+    company: "Prometric Testing and Assessment Solutions",
+    place: "Ranipauwa, Pokhara",
+    when: "2025",
+    points: [
+      "Ran daily test-center operations and resolved technical issues with testing software and hardware.",
+    ],
   },
 ];
 
@@ -61,38 +119,39 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: "Vyam — Gym SaaS ERP",
+    title: "Vyam: Multi-tenant Gym SaaS ERP",
     description:
-      "Multi-tenant ERP for gym businesses. Worked across UI design, QA test design, and frontend feature development for membership, billing, and staff-management modules.",
-    stack: ["Figma", "React", "TypeScript", "PostgreSQL"],
+      "Found and fixed a critical authorization flaw where branch-scoped staff could see other branches' member data. Also fixed member status not auto-expiring by adding a scheduled node-cron job, and audited the UI/UX over several cycles, documenting broken flows and branding issues for the project manager.",
+    stack: ["Next.js 14", "Fastify", "PostgreSQL", "Prisma", "Tailwind"],
     status: "Internship project",
   },
   {
-    title: "Load & Security Testing — app.aindalabs.com",
+    title: "Vyapar Margdarshan: Expense Tracking & Advisory System",
     description:
-      "Assigned by the CTO to run structured load testing and surface performance bottlenecks under concurrent load using k6, plus basic security checks.",
-    stack: ["k6", "JavaScript", "CI"],
-    status: "Client engagement",
+      "An expense tracker for SMEs with a rule-based financial advisory engine and an analytics dashboard. Role-based access control for Admin, Staff and Owner, with secure authentication and REST APIs.",
+    stack: ["React.js", "Django", "PostgreSQL", "REST API"],
+    status: "Final year project",
   },
   {
-    title: "Travel Platform Rate-Limit Testing",
+    title: "WovenWay: Online Hemp Clothing Store",
     description:
-      "Authorized penetration testing focused on rate-limiting and abuse-prevention controls for a production travel booking client site.",
-    stack: ["Python", "Burp Suite", "REST APIs"],
-    status: "Client engagement",
+      "An e-commerce store with an analytics dashboard and role-based access for Admin, Customer and Owner.",
+    stack: ["React.js", "Django", "PostgreSQL", "REST API"],
+    status: "Minor project",
   },
   {
-    title: "Vyapar Margdarshan",
+    title: "Job Application Tracker",
     description:
-      "Final-year group project: an SME expense management platform with a rule-based financial advisory engine to help small businesses make sense of their spending.",
-    stack: ["React", "Python-Django", "PostgreSQL"],
-    status: "Academic project",
+      "A web app to log job and internship applications and track their status.",
+    stack: ["MongoDB", "Express", "React", "Node.js", "TypeScript"],
+    status: "Personal project",
   },
 ];
 
 export const nav = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];

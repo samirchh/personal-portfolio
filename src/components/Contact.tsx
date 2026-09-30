@@ -1,39 +1,50 @@
 import { profile } from "@/data/content";
+import ContactForm from "./ContactForm";
 
 export default function Contact() {
   return (
-    <footer id="contact" className="border-t border-border">
-      <div className="mx-auto max-w-content px-6 py-16">
-        <p className="font-mono text-sm text-accent">
-          <span className="text-muted">$</span> contact --send
-        </p>
-        <h2 className="mt-4 max-w-[30ch] text-2xl font-medium leading-snug text-text">
-          Have a project, a bug to report, or just want to say hi?
-        </h2>
-        <a
-          href={`mailto:${profile.email}`}
-          className="mt-4 inline-block font-mono text-base text-accent underline underline-offset-4 hover:opacity-80"
-        >
-          {profile.email}
-        </a>
+    <footer id="contact" className="bg-ink text-canvas">
+      <div className="mx-auto max-w-board px-6 py-24 md:px-10 md:py-32">
+        <div className="grid gap-16 lg:grid-cols-12">
+          <div className="lg:col-span-6">
+            <h2 className="max-w-[12ch] font-display text-[clamp(2.6rem,6.5vw,5.5rem)] font-bold leading-[0.98] tracking-tight">
+              Get in touch with me
+            </h2>
+            <p className="mt-6 max-w-[40ch] text-lg text-canvas/70">
+              Have a project, a role, or a bug to look at? Send a message and
+              I'll reply.
+            </p>
 
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6">
-          <div className="flex gap-5">
+            <a
+              href={`mailto:${profile.email}`}
+              className="mt-10 inline-block break-all font-display text-xl font-semibold underline decoration-redline decoration-[3px] underline-offset-[8px] transition-colors hover:text-redline md:text-2xl"
+            >
+              {profile.email}
+            </a>
+          </div>
+
+          <div className="lg:col-span-6">
+            <ContactForm />
+          </div>
+        </div>
+
+        <div className="mt-20 flex flex-wrap items-center justify-between gap-4 border-t border-canvas/20 pt-6 text-[15px] text-canvas/70">
+          <div className="flex gap-6">
             <a
               href={profile.social.github}
-              className="font-mono text-sm text-muted hover:text-accent"
+              className="transition-colors hover:text-canvas"
             >
-              github
+              GitHub
             </a>
             <a
               href={profile.social.linkedin}
-              className="font-mono text-sm text-muted hover:text-accent"
+              className="transition-colors hover:text-canvas"
             >
-              linkedin
+              LinkedIn
             </a>
           </div>
-          <p className="font-mono text-xs text-muted">
-            {profile.location} · © {new Date().getFullYear()}
+          <p>
+            {profile.location}, {new Date().getFullYear()}
           </p>
         </div>
       </div>
